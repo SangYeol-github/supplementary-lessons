@@ -1,0 +1,68 @@
+클래스간의 관계
+- IS A		: 상속(class Cat extends Animal)
+- HAS A		: 멤버변수 선언
+- Dependency	: 일시적 의존 (메소드 파라미터 선언)
+
+Dependency	
+- 어떤 클래스의 메소드 파라미터로 객체의 참조 전달
+
+class StudentManager {
+	
+	Student st;  // 항상 여기에 선언하는것은 아니다.
+	
+	//학생들의 정보를 관리하는 클래스
+	//임의의 학생 이름을 출력한다
+	public void printName(Student st) {
+		
+		System.out.println(st.getName());
+				
+	}
+	
+	//임의의 학생 이름을 설정한다
+	public void setName(Student st) {
+		
+		st.setName("Mary");
+	}
+
+}
+
+
+
+게시판 글쓰기
+이용자는 게시판 글 리스트에서 하단의 [게시글 쓰기] 링크를 누른다
+화면에 게시글 입력폼이 표시되면 제목과 글 내용을 입력한다
+이용자는 [글 입력] 버튼을 눌러서 게시글을 저장한다
+화면에 게시글 저장 성공/실패 메시지가 표시된다
+이용자는 성공/실패 메시지의 [확인] 버튼을 클릭한다
+
+이용자 게시판 리스트 링크 게시글 입력폼 제목 글내용 버튼
+
+이용자 : 속성과 기능이 없으므로 클래스가 아님
+게시판 : 제목, 글내용 2개의 속성이 존재하므로 클래스 가능
+BoardVO : title, contents
+
+
+게시판 상세보기 페이지에서 기존에 업로드된 이미지 보여주기
+<img src = "img url">
+웹브라우저에서 주소창에 이미지 주소를 입력하여 보여질 위치에 둠
+http://localhost/bbs/images/sample.png
+위와 같이 요청하여 이미지가 화면에 보여질 수 있으려면 이미지는
+어떤 위치에 저장되어 있어야 하는가?
+1. static/bbs/images/sample.png
+2. webapp/bbs/images/sample.png
+
+업로드할때 주어진 경로가 'WEB-INF/upload'
+대신 'bbs/images'
+
+다수개의 쓰레드가 실행되는 웹 환경
+- 각 이용자의 요청시마다 한개의 쓰레드가 생성되서 실행됨
+- 동시에 한개의 작업을 다수개의 쓰레드가 하려는 경우가 발생
+- 이미 어떤 쓰레드가 먼저 해당 작업을 수행하고 있다면...
+- 동기화(Synchronized) 문제 발생가능
+- 나중에 요청한 쓰레드를 기다리게 해야 함(순차처리)
+- 예약처리와 같은 DB에 변경을 가하는 작업을 순차처리를 해야 함
+- 동기화(Synchronized) 키워드를 통해 해결
+
+
+
+
